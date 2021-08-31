@@ -1,0 +1,58 @@
+@import '../../vendors/fonts/Montserrat/Montserrat.css';
+.page {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-rows: min-content auto min-content;
+  min-width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(309deg, #00ffbd, #000000);
+  background-size: 400% 400%;
+  -webkit-animation: background 30s ease-in-out infinite;
+  -moz-animation: background 30s ease-in-out infinite;
+  animation: background 30s ease-in-out infinite;
+}
+
+@keyframes background {
+  0% {
+    background-position: 0% 5%;
+  }
+  50% {
+    background-position: 100% 96%;
+  }
+  100% {
+    background-position: 0% 5%;
+  }
+}
+@-webkit-keyframes background {
+  0% {
+    background-position: 0% 5%;
+  }
+  50% {
+    background-position: 100% 96%;
+  }
+  100% {
+    background-position: 0% 5%;
+  }
+}
+@-moz-keyframes background {
+  0% {
+    background-position: 0% 5%;
+  }
+  50% {
+    background-position: 100% 96%;
+  }
+  100% {
+    background-position: 0% 5%;
+  }
+}
+.main-text {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 0.875em;
+  line-height: 1.2;
+  color: #fff;
+}
