@@ -1,0 +1,62 @@
+.playlist {
+  position: relative;
+  bottom: 0;
+  margin: auto;
+  padding: 40px 25px;
+  display: block;
+  box-sizing: border-box;
+  max-width: 1024px;
+  min-width: 320px;
+  min-height: fit-content;
+  width: 100%;
+  background: #212121;
+  background: linear-gradient(180deg, #212121 0%, #121212 25%);
+  border-radius: 10px 10px 0px 0px;
+  overflow: hidden;
+}
+.playlist__info-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+.playlist__cover {
+  max-width: 150px;
+  max-height: 150px;
+}
+.playlist__info {
+  margin: 0 0 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.playlist__title {
+  display: block;
+  font-weight: 900;
+  font-size: 50px;
+}
+.playlist__description {
+  display: block;
+  font-weight: 400;
+  font-size: 16px;
+}
+.playlist__list {
+  display: flex;
+  flex-direction: column;
+  margin: 40px 0 0 0;
+  padding: 0 20px 0 0;
+  max-height: 500px;
+  overflow: hidden scroll;
+  text-decoration: none;
+  list-style: none;
+  gap: 20px;
+}
+.playlist__list::-webkit-scrollbar {
+  width: 5px;
+}
+.playlist__list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.playlist__list::-webkit-scrollbar-thumb {
+  width: 5px;
+  background: #212121;
+  border-radius: 5px;
+}

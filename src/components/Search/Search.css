@@ -14,22 +14,25 @@
   align-items: center;
   justify-content: center;
 }
-.search-bar__text-input {
+.search-bar__search-form {
+  max-width: 700px;
+  width: 100%;
+}
+.search-bar__search-input {
   position: relative;
   margin: 0;
   padding: 10px 20px 10px 60px;
   box-sizing: border-box;
-  max-width: 600px;
-  width: 100%;
+  min-width: 100%;
   -webkit-appearance: none;
   border: none;
   border-radius: 25px;
   background-color: #fff;
 }
-.search-bar__text-input:focus {
+.search-bar__search-input:focus {
   outline: none;
 }
-.search-bar__text-input::before {
+.search-bar__search-input::before {
   display: block;
   position: absolute;
   top: 0;

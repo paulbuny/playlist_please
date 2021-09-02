@@ -15,14 +15,17 @@
   overflow: hidden;
   align-items: center;
   justify-content: center;
-  &__text-input {
+  &__search-form {
+    max-width: 700px;
+    width: 100%;
+  }
+  &__search-input {
     position: relative;
     margin: 0;
     padding: 10px 20px 10px 60px;
     box-sizing: border-box;
 
-    max-width: 600px;
-    width: 100%;
+    min-width: 100%;
 
     -webkit-appearance: none;
     border: none;
