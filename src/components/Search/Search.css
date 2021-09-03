@@ -15,6 +15,7 @@
   justify-content: center;
 }
 .search-bar__search-form {
+  position: relative;
   max-width: 700px;
   width: 100%;
 }
@@ -32,13 +33,15 @@
 .search-bar__search-input:focus {
   outline: none;
 }
-.search-bar__search-input::before {
+.search-bar__search-icon {
   display: block;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 25px;
+  right: 0;
+  bottom: 0;
   content: "";
-  width: 10px;
-  height: 10px;
-  background-color: red;
+  width: 24px;
+  height: 24px;
+  transform: translateY(-50%);
 }

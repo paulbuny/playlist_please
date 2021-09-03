@@ -1,18 +1,22 @@
 .playlist {
   position: relative;
-  bottom: 0;
-  margin: auto;
+  bottom: -600px;
+  margin: 40px auto 0 auto;
   padding: 40px 25px;
   display: block;
   box-sizing: border-box;
   max-width: 1024px;
   min-width: 320px;
-  min-height: fit-content;
+  min-height: 100%;
+  max-height: 100%;
   width: 100%;
   background: #212121;
   background: linear-gradient(180deg, #212121 0%, #121212 25%);
   border-radius: 10px 10px 0px 0px;
-  overflow: hidden;
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.playlist:hover {
+  bottom: 0;
 }
 .playlist__info-wrapper {
   display: flex;
@@ -43,7 +47,7 @@
   flex-direction: column;
   margin: 40px 0 0 0;
   padding: 0 20px 0 0;
-  max-height: 500px;
+  max-height: 550px;
   overflow: hidden scroll;
   text-decoration: none;
   list-style: none;

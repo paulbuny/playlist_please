@@ -16,6 +16,7 @@
   align-items: center;
   justify-content: center;
   &__search-form {
+    position: relative;
     max-width: 700px;
     width: 100%;
   }
@@ -34,16 +35,18 @@
     &:focus {
       outline: none;
     }
-    &::before {
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      content: '';
+  }
+  &__search-icon {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 25px;
+    right: 0;
+    bottom: 0;
+    content: '';
 
-      width: 10px;
-      height: 10px;
-      background-color: red;
-    }
+    width: 24px;
+    height: 24px;
+    transform: translateY(-50%);
   }
 }
