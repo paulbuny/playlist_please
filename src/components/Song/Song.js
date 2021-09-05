@@ -1,26 +1,42 @@
 import './Song.css';
-import coverSample from '../../images/cover-sample.jpg'
+import {useEffect, useState} from 'react';
 
-function Song() {
-  const artist = 'Jimi Hendrix';
-  const song = 'All Along the Watchtower';
-  const album = 'Electric Ladyland';
-  const duration = '4:00';
+function Song({
+  image,
+  name,
+  artists,
+  album,
+  duration,
+}) {
+
+  function artistsList() {
+    let newArtist = [];
+
+    artists.forEach((item) => {
+      newArtist.push(item.name);
+    })
+
+    return newArtist.join(', ');
+  }
+
+  function msToMin(ms) {
+    return `${Math.floor(ms / 1000 / 60)}:${Math.floor(ms / 1000 % 60) === 0 ? '00' : Math.floor(ms / 1000 % 60)}`;
+  }
 
   return (
     <li className="song playlist__item">
       <div className="song__wrapper">
-        <img className="song__cover" src={coverSample} alt={`Cover of album ${song}`}></img>
+        <img className="song__cover" src={image} alt={`Cover of album`}></img>
         <div className="song__info">
-          <span className="song__name">{song}</span>
-          <span className="song__artist">{artist}</span>
+          <span className="song__name">{name}</span>
+          <span className="song__artist">{artistsList()}</span>
         </div>
       </div>
       <div className="song__info">
         <span className="song__album">{album}</span>
       </div>
       <div className="song__info">
-        <span className="song__duration">{duration}</span>
+        <span className="song__duration">{msToMin(duration)}</span>
       </div>
     </li>
   )
