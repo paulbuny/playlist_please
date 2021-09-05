@@ -2,8 +2,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  max-width: 100%;
-  width: 100%;
+  min-width: 100%;
 }
 .song__wrapper {
   display: flex;
@@ -42,4 +41,17 @@
   display: block;
   font-weight: 500;
   color: #8D8D8D;
+}
+
+@media screen and (max-width: 720px) {
+  .song {
+    max-width: 40px;
+    max-height: 40px;
+  }
+  .song__name {
+    font-size: 12px;
+  }
+  .song__artist {
+    font-size: 12px;
+  }
 }

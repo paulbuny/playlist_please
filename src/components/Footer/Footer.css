@@ -1,12 +1,16 @@
 .footer {
-  margin: 0;
+  margin: 0 auto;
   padding: 0 25px;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  min-width: 100%;
+  align-items: center;
+  max-width: 1024px;
+  min-width: min-content;
+  width: 100%;
   min-height: 25px;
   box-sizing: border-box;
+  background-color: #121212;
 }
 .footer__text {
   margin: 0;
@@ -14,4 +18,10 @@
   font-size: 0.7em;
   font-weight: 700;
   opacity: 0.5;
+}
+
+@media screen and (max-width: 720px) {
+  .footer {
+    padding: 0 5px;
+  }
 }

@@ -2,10 +2,11 @@ import './Main.css';
 import Playlist from '../Playlist/Playlist';
 
 function Main() {
+
   return (
-    <div className="main-content">
+    <main className="main-content">
       <Playlist />
-    </div>
+    </main>
   )
 }
 

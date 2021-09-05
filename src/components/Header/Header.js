@@ -3,10 +3,10 @@ import Search from '../Search/Search';
 
 function Header() {
   return (
-    <div className="header">
+    <header className="header">
       <div className="logo"></div>
       <Search />
-    </div>
+    </header>
   )
 }
 

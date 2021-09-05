@@ -1,7 +1,7 @@
 .header {
   min-width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1024px 1fr;
+  grid-template-columns: 1fr minmax(320px/1024px) 1fr;
 }
 
 .logo {

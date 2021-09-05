@@ -45,3 +45,9 @@
   height: 24px;
   transform: translateY(-50%);
 }
+
+@media screen and (max-width: 720px) {
+  .search-bar__search-input {
+    font-size: 14px;
+  }
+}
