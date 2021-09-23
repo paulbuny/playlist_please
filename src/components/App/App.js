@@ -7,21 +7,37 @@ import { useState, useEffect } from 'react';
 
 function App() {
   // Временное решение
-  const token = 'BQBtikWBfbG_IBBm1xsGKZFhxhz4ULQXSj1BTXdPVYWYJVMzP_8N7_H6ydi7qadfs0aka-aW3o6TmvNfWe9MtY4FVPVmUQM02F60rGcOn8_4uq7tu4PrgJpR5SP0_jDB798D5jrpclg6DgCMgcYZKlFg-mzrZ3PxrSm3fJrvEC-8kMP1v1g';
+  const [token, setToken] = useState();
 
-  // Временное решение
+
+  // Временное решение (Возможно)
+  const clientId = '3555f0bb55b54cd0ba3c78cdae0320b4';
+  const clientSecret = '06368413f13945ffbb172018151042af';
   const playlistId = '5m5N5vubRxXAuqHkOH35an';
 
   // Переменные с информацией плэйлиста и треклиста
-  const [currentPlaylist, setCurrentPlaylist] = useState({});
+  const [currentPlaylist, setCurrentPlaylist] = useState({
+    image: '',
+    name: '',
+    description: '',
+  });
+
   const [trackList, setTrackList] = useState([]);
+
+  useEffect(() => {
+    spotifyApi.login(clientId, clientSecret)
+    .then((res) => {
+      setToken(res.access_token);
+    });
+  }, []);
 
   useEffect(() => {
     spotifyApi.getListOfPlaylistsTracks(token, playlistId)
     .then ((res) => {
       setTrackList(res.items);
-    });
-  }, []);
+    })
+    .catch((err) => console.log(`###: ${err.message} -> Error in attempt to take current playlist\'s tracks`));
+  }, [token]);
 
   useEffect(() => {
     spotifyApi.getPlaylist(token, playlistId)
@@ -31,8 +47,11 @@ function App() {
         name: res.name,
         description: res.description,
       });
-    });
-  }, []);
+    })
+    .catch((err) => console.log(`###: ${err.message} -> Error in attempt to take current playlist`));
+  }, [token]);
+
+
 
   return (
     <div className="page">

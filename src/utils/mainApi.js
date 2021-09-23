@@ -1,6 +1,7 @@
 class SpotifyApi {
   constructor({baseUrl}) {
     this._baseUrl = baseUrl;
+    this._authUrl = 'https://accounts.spotify.com/api/token';
   }
 
   _getResponseStatus (res) {
@@ -9,6 +10,24 @@ class SpotifyApi {
     } else {
       return Promise.reject(new Error(`Ошибка: ${res.status}`));
     }
+  }
+
+  login (clientId, clientSecret) {
+    const token = window.btoa(`${clientId}:${clientSecret}`);
+
+    let urlParams = new URLSearchParams();
+    urlParams.append("grant_type", "client_credentials");
+
+    return fetch(this._authUrl, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': `Basic ${token}`,
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: urlParams,
+    })
+    .then((res) => this._getResponseStatus(res));
   }
 
   getCurrentUserPlaylists (token) {

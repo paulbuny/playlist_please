@@ -1,5 +1,4 @@
 import './Song.css';
-import {useEffect, useState} from 'react';
 
 function Song({
   image,

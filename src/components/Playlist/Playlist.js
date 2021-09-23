@@ -34,13 +34,21 @@ function Playlist({currentPlaylist, trackList}) {
   }, [trackList]);
 
   // Функция переключения состояния отображения плейлиста
-  function playlistShownHandler() {
+  function togglePlaylistShownHandler() {
     setIsShown(!isShown);
   }
 
+  function onMouseEnterPlaylistShownHandler () {
+    setIsShown(true);
+  }
+
+  function onMouseLeavePlaylistShownHandler () {
+    setIsShown(false);
+  }
+
   return (
-    <section style={{maxHeight: playlistContainerHeight + 'px'}} className="playlist" onMouseEnter={playlistShownHandler} onMouseLeave={playlistShownHandler}>
-      <div className="playlist__info-wrapper" onClick={playlistShownHandler}>
+    <section style={{maxHeight: playlistContainerHeight + 'px'}} className="playlist" onMouseEnter={onMouseEnterPlaylistShownHandler} onMouseLeave={onMouseLeavePlaylistShownHandler}>
+      <div className="playlist__info-wrapper" onClick={togglePlaylistShownHandler}>
         <img className="playlist__cover" src={currentPlaylist.image} alt="playlist cover"></img>
         <div className="playlist__info">
           <span className="playlist__title">{currentPlaylist.name}</span>

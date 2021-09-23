@@ -1,7 +1,8 @@
 .song {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  // flex-direction: row;
+  // justify-content: space-between;
   min-width: 100%;
   &__wrapper {
     display: flex;
@@ -36,6 +37,7 @@
     color: #8D8D8D;
   }
   &__duration {
+    align-self: flex-end;
     font-size: 14px;
     display: block;
     font-weight: 500;
