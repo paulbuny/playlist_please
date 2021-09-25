@@ -2,9 +2,8 @@ import './Playlist.css';
 import Song from '../Song/Song';
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { render } from '@testing-library/react';
 
-function Playlist({currentPlaylist, trackList}) {
+function Playlist ({currentPlaylist, trackList}) {
   const [isShown, setIsShown] = useState(false);
   const [currentTrackList, setCurrentTrackList] = useState(trackList);
 
@@ -27,7 +26,7 @@ function Playlist({currentPlaylist, trackList}) {
     setPlaylistContainerHeight(windowHeight - footerHeight - headerHeight);
     setPlaylistInfoHeight(playlistInfo);
     setPlalistHeight(playlistContainerHeight - playlistInfoHeight);
-  });
+  }, [footerHeight, headerHeight, playlistContainerHeight, playlistInfoHeight]);
 
   useEffect(() => {
     setCurrentTrackList(trackList);

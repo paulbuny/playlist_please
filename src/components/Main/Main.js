@@ -1,7 +1,7 @@
 import './Main.css';
 import Playlist from '../Playlist/Playlist';
 
-function Main({currentPlaylist, trackList}) {
+function Main ({currentPlaylist, trackList}) {
 
   return (
     <main className="main-content">

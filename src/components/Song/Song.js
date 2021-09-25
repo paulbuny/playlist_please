@@ -1,6 +1,6 @@
 import './Song.css';
 
-function Song({
+function Song ({
   image,
   name,
   artists,
