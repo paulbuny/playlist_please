@@ -1,9 +1,9 @@
 import './Search.css';
-import { useState } from 'react';
 
 function Search (props) {
 
   function handleOnChange (evt) {
+    props.isShownHandler(evt.target.value);
     props.onSearchQueryUpdate(evt.target.value);
   }
 

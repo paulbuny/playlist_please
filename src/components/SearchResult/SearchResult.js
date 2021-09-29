@@ -1,34 +1,39 @@
 import './SearchResult.css';
 import Song from '../Song/Song';
+import { useState, useEffect } from 'react';
 
 function SearchResult (props) {
-  const currentTrackList = [{
-    track: {
-      id: 1,
-      album: {
-        name: 'Nothing Else',
-        images: [{url: 'https://images.genius.com/16d9d9b1d2a2e4c6a92d907eed99c39b.1000x1000x1.png'}]
-      },
-      name: 'Acid Rain',
-      artists: [{name: 'Lorn'}],
-      duration_ms: 240000,
-    }
-  }]
+  const [marginTop, setMarginTop] = useState(0);
+  const [searchResult, setSearchResult] = useState(props.searchResult);
+
+  console.log(searchResult);
+
+  // Вычисление высоты отступа для списка поиска
+  useEffect(() => {
+    const headerHeight = document.querySelector('.header').clientHeight;
+
+    setMarginTop(headerHeight + 40); //40 - высота top padding в px
+  }, []);
+
+  useEffect(() => {
+    setSearchResult(props.searchResult);
+  }, [props.searchResult]);
 
   return (
-    <div className="search-result">
-      <ul className="search-result__list">
-      {
-              currentTrackList.map((item) => (
-                <Song key={item.track.id}
-                      image={item.track.album.images[0].url}
-                      name={item.track.name}
-                      artists={item.track.artists}
-                      album={item.track.album.name}
-                      duration={item.track.duration_ms}
-                />
-              ))
-            }
+    <div style={{paddingTop: marginTop + 'px'}} className={props.isShown ? 'search-result search-result_display_active' : 'search-result'}>
+      <ul className="search-result__list">{
+        searchResult.length === 0 ? 'Ничего не найдено' :
+          searchResult.map((item) => (
+            <Song key={item.id}
+                  image={item.album.images[0].url}
+                  name={item.name}
+                  artists={item.artists}
+                  album={item.album.name}
+                  duration={item.duration_ms}
+                  status={''}
+            />
+          ))
+      }
       </ul>
     </div>
   )

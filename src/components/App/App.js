@@ -4,6 +4,7 @@ import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
 import spotifyApi from '../../utils/mainApi';
 import { useState, useEffect } from 'react';
+import { useCallback } from 'react/cjs/react.development';
 
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('');
 
   // Переменная с токеном пользователя
-  const [token, setToken] = useState();
+  const [token, setToken] = useState('');
 
   // Переменные с информацией плэйлиста и треклиста
   const [currentPlaylist, setCurrentPlaylist] = useState({
@@ -26,9 +27,21 @@ function App() {
 
   const [trackList, setTrackList] = useState([]);
 
+  const [searchResult, setSearchResult] = useState([{
+    id: 1,
+    album: {
+      images: [{url: ''}],
+      name: ''
+    },
+    name: '',
+    artists: '',
+    duration_ms: 42000,
+}]);
+
   useEffect(() => {
     spotifyApi.authorization(clientId, clientSecret)
     .then((res) => {
+      console.log(res.access_token);
       setToken(res.access_token);
     })
     .catch((err) => console.log(`###: ${err.message} -> Error in attempt to authorize`))
@@ -39,7 +52,7 @@ function App() {
     .then ((res) => {
       setTrackList(res.items);
     })
-    .catch((err) => console.log(`###: ${err.message} -> Error in attempt to take current playlist\'s tracks`));
+    .catch((err) => console.log(`###: ${err.message} -> Error in attempt to take current playlist's tracks`));
   }, [token]);
 
   useEffect(() => {
@@ -55,20 +68,22 @@ function App() {
   }, [token]);
 
   // Функция для поиска трека
-  function searchByQuery (token, query) {
-    if (searchQuery.length === 0) {
-      console.log("Not searching!");
-    } else {
-      console.log("Searching!");
+  const searchByQuery = useCallback((token, query) => {
+      if (searchQuery.length === 0) {
+        console.log("Not searching!");
+      } else {
+        console.log("Searching!");
 
-      spotifyApi.searchForAnItem(token, query)
-      .then((res) => console.log(res));
-    }
-  }
+        spotifyApi.searchForAnItem(token, query)
+        .then((res) => {
+          setSearchResult(res.tracks.items);
+        });
+      }
+  }, [searchQuery.length])
 
   useEffect(() => {
     searchByQuery(token, searchQuery);
-  }, [token, searchQuery]);
+  }, [token, searchQuery, searchByQuery]);
 
   // Обновление поиска трека по изменению запроса
   function onSearchQueryUpdate (query) {
@@ -80,11 +95,11 @@ function App() {
     searchByQuery(token, searchQuery);
   }
 
-
   return (
     <div className="page">
       <Header onSearchQueryUpdate={onSearchQueryUpdate}
               onHandleSubmit={onHandleSubmit}
+              searchResult={searchResult}
               />
       <Main currentPlaylist={currentPlaylist}
             trackList={trackList}

@@ -1,4 +1,6 @@
 .header {
+  display: block;
+  position: relative;
   min-width: 100%;
   display: grid;
   grid-template-columns: 1fr minmax(320px/1024px) 1fr;

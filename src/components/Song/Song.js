@@ -25,17 +25,17 @@ function Song ({
   return (
     <li className="song playlist__item">
       <div className="song__wrapper">
-        <img className="song__cover" src={image} alt={`Cover of album`}></img>
+        <img className="song__cover" src={image ? image : ''} alt={`Cover of album`}></img>
         <div className="song__info">
-          <span className="song__name">{name}</span>
-          <span className="song__artist">{artistsList()}</span>
+          <span className="song__name">{name ? name : ''}</span>
+          <span className="song__artist">{artists ? artistsList() : ''}</span>
         </div>
       </div>
       <div className="song__info">
-        <span className="song__album">{album}</span>
+        <span className="song__album">{album ? album : ''}</span>
       </div>
       <div className="song__info">
-        <span className="song__duration">{msToMin(duration)}</span>
+        <span className="song__duration">{duration ? msToMin(duration) : ''}</span>
       </div>
     </li>
   )

@@ -1,4 +1,18 @@
+.search {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 1024px;
+  width: 100%;
+  z-index: 1;
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  overflow: hidden;
+  border-radius: 0 0 10px 10px;
+  background-color: #121212;
+}
+
 .search-bar {
+  position: relative;
   margin: 0;
   padding: 10px 25px;
   box-sizing: border-box;
@@ -9,10 +23,10 @@
   width: 100%;
   justify-self: center;
   background-color: #121212;
-  border-radius: 0 0 10px 10px;
-  overflow: hidden;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  z-index: 3;
 }
 .search-bar__search-form {
   position: relative;
